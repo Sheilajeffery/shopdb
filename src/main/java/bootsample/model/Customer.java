@@ -16,10 +16,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Entity(name = "customer")
 public class Customer implements Serializable{
 
-	@Autowired 
-	@Qualifier("firstDataSource") 
-	private DataSource firstDataSource; 
-	
 	@Id
 	@Column(name="customerID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
