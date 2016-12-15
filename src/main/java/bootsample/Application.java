@@ -18,6 +18,12 @@ public class Application {
 	public DataSource primaryDataSource() {
 	    return DataSourceBuilder.create().build();
 	}
+	
+	@Bean
+	@ConfigurationProperties(prefix="spring.shopsource")
+	public DataSource secondDataSource() {
+	    return DataSourceBuilder.create().build();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
