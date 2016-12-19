@@ -3,7 +3,8 @@ package bootsample.service;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
-import bootsample.dao.HistoryRepository;
+
+import bootsample.dao.customers.HistoryRepository;
 
 @Service
 @Transactional

@@ -1,4 +1,4 @@
-package bootsample.model;
+package bootsample.model.customers;
 
 import java.io.Serializable;
 

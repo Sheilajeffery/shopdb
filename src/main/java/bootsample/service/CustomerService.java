@@ -3,14 +3,15 @@ package bootsample.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import bootsample.dao.CustomerRepository;
-import bootsample.model.Customer;
+import bootsample.dao.customers.CustomerRepository;
+import bootsample.model.customers.Customer;
 
-@Service
+
 @Transactional
 public class CustomerService {
 

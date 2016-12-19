@@ -27,6 +27,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="new-customer">New Customer</a></li>
 					<li><a href="all-customers">All Customers</a></li>
+					<li><a href="all-products">All Products</a></li>
 				</ul>
 			</div>
 		</div>
@@ -40,6 +41,45 @@
 				</div>
 			</div>
 		</c:when>
+		
+		<c:when test="${mode== 'MODE_PRODUCTS'}">
+			<div class="container text-center " id="tasksDiv">
+				<h3>My Products</h3>
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered text-left">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>name</th>
+								<th>description</th>
+								<th>price</th>
+								<th>stock</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="product" items="${products}">
+								<tr>
+									<td>${product.id}</td>
+									<td>${product.name}</td>
+									<td>${product.description}</td>
+									<td>${product.price}</td>
+									<td>${product.stock}</td>
+									<td><a href="update-product?id=${product.id}"><span
+											class="glyphicon glyphicon-pencil"></span></a></td>
+									<td><a href="delete-product?id=${product.id}"><span
+											class="glyphicon glyphicon-trash"></span></a></td>
+								</tr>
+								<tr></tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				</div>   
+		</c:when>
+		
 		<c:when test="${mode== 'MODE_CUSTOMERS'}">
 			<div class="container text-center " id="tasksDiv">
 				<h3>My Customers</h3>
