@@ -1,6 +1,5 @@
 package bootsample.dao.shop;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 
 import bootsample.model.shop.Product;

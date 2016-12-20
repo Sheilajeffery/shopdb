@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-@Entity()
-@Table(name = "product")
+@Entity(name = "product")
+//@Table(name = "product")
 public class Product implements Serializable {
 	
 	@Id

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +14,10 @@ import bootsample.model.customers.Customer;
 
 
 @Transactional
+@Service
 public class CustomerService {
 
+	
 	private final CustomerRepository customerRepository;
 
 	public CustomerService(CustomerRepository customerRepository) {

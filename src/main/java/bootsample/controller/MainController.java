@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import bootsample.model.customers.Customer;
 import bootsample.model.shop.Product;
@@ -18,13 +19,13 @@ import bootsample.service.ProductService;
 
 @Controller
 public class MainController {
-
+	
 	@Autowired
-	@Qualifier("primaryDataSource")
+	//@Qualifier("primaryDataSource")
 	private CustomerService customerService;
 	
 	@Autowired
-	@Qualifier("secondDataSource")
+	//@Qualifier("secondDataSource")
 	private ProductService productService;
 
 	@GetMapping("/")
@@ -70,20 +71,17 @@ public class MainController {
 		return "index";
 	}
 
-	
-	
-
 	@GetMapping("/home2")
 	public String home2(HttpServletRequest request) {
 		request.setAttribute("products", productService.findAll());
 		request.setAttribute("mode", "MODE_HOME2");
-		return "index";
+		return "produse";
 	}
 
 	@GetMapping("/all-products")
 	public String allProducts(HttpServletRequest request) {
 		request.setAttribute("products", productService.findAll());
-		request.setAttribute("mode", "MODE__PRODUCTS");
+		request.setAttribute("mode", "MODE_PRODUCTS");
 		return "index";
 	}
 
