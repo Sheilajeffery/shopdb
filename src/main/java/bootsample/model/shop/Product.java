@@ -15,12 +15,10 @@ import javax.persistence.Table;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 @Entity(name = "product")
-//@Table(name = "product")
 public class Product implements Serializable {
 	
 	@Id
 	@Column(name="productID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String description;

@@ -25,9 +25,10 @@
 			<a href="/" class="navbar-brand">My Shop</a>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="new-customer">New Customer</a></li>
 					<li><a href="all-customers">All Customers</a></li>
+					<li><a href="new-customer">New Customer</a></li>
 					<li><a href="all-products">All Products</a></li>
+					<li><a href="new-product">New Product</a></li>
 				</ul>
 			</div>
 		</div>
@@ -41,42 +42,10 @@
 				</div>
 			</div>
 			<div class="container text-center " id="tasksDiv">
-				<h3>My Products</h3>
-				<hr>
-				<div class="table-responsive">
-					<table class="table table-striped table-bordered text-left">
-						<thead>
-							<tr>
-								<th>id</th>
-								<th>name</th>
-								<th>description</th>
-								<th>price</th>
-								<th>stock</th>
-								<th></th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="product" items="${products}">
-								<tr>
-									<td>${product.id}</td>
-									<td>${product.name}</td>
-									<td>${product.description}</td>
-									<td>${product.price}</td>
-									<td>${product.stock}</td>
-									<td><a href="update-product?id=${product.id}"><span
-											class="glyphicon glyphicon-pencil"></span></a></td>
-									<td><a href="delete-product?id=${product.id}"><span
-											class="glyphicon glyphicon-trash"></span></a></td>
-								</tr>
-								<tr></tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-				</div>   
+				<!--  <hr> -->
+			</div>
 		</c:when>
-		
+
 		<c:when test="${mode== 'MODE_PRODUCTS'}">
 			<div class="container text-center " id="tasksDiv">
 				<h3>My Products</h3>
@@ -112,10 +81,52 @@
 						</tbody>
 					</table>
 				</div>
-				</div>   
+			</div>
 		</c:when>
-		
-		<c:when test="${mode== 'MODE_CUSTOMERS'}">
+
+		<c:when
+			test="${mode == 'MODE_NEW_PRODUCT' || mode == 'MODE_UPDATE_PRODUCT'}">
+			<div class="container text-center">
+				<h3>Manage Products</h3>
+				<hr>
+				<form class="form-horizontal" method="POST" action="save-product">
+					<input type="hidden" name="id" value="${product.id}" />
+					<div class="form-group">
+						<label class="control-label col-md-3">Name</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="name"
+								value="${product.name}" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<label class="control-label col-md-3">Description</label>
+						<div class="col-md-7">
+						<input type="text" class="form-control" name="description"
+							value="${product.description}" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<label class="control-label col-md-3">Price</label>
+						<div class="col-md-7">
+						<input type="text" class="form-control" name="price"
+								value="${product.price}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3">Stock</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="stock"
+								value="${product.stock}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" value="Save" />
+					</div>
+			</form>
+			</div>		
+		</c:when>
+
+		<c:when test="${mode == 'MODE_CUSTOMERS'}">
 			<div class="container text-center " id="tasksDiv">
 				<h3>My Customers</h3>
 				<hr>
@@ -158,7 +169,7 @@
 						</tbody>
 					</table>
 				</div>
-				</div>
+			</div>
 		</c:when>
 		<c:when test="${mode == 'MODE_NEW' || mode== 'MODE_UPDATE'}">
 			<div class="container text-center">

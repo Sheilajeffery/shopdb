@@ -95,7 +95,7 @@ public class MainController {
 	public String saveProduct(@ModelAttribute Product product, BindingResult bindingResult, HttpServletRequest request) {
 		productService.save(product);
 		request.setAttribute("products", productService.findAll());
-		request.setAttribute("mode", "MODE_PRODUTCS");
+		request.setAttribute("mode", "MODE_PRODUCTS");
 		return "index";
 	}
 
@@ -110,7 +110,7 @@ public class MainController {
 	public String deleteProduct(@RequestParam int id, HttpServletRequest request) {
 		productService.delete(id);
 		request.setAttribute("products", productService.findAll());
-		request.setAttribute("mode", "MODE__PRODUCTS");
+		request.setAttribute("mode", "MODE_PRODUCTS");
 		return "index";
 	}
 	
