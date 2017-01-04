@@ -3,30 +3,31 @@ package bootsample.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import bootsample.model.customers.Customer;
-import bootsample.model.shop.Product;
-import bootsample.service.CustomerService;
-import bootsample.service.ProductService;
+import bootsample.model.customers.*;
+import bootsample.model.shop.*;
+import bootsample.service.*;
 
 @Controller
 public class MainController {
 	
 	@Autowired
-	//@Qualifier("primaryDataSource")
 	private CustomerService customerService;
 	
 	@Autowired
-	//@Qualifier("secondDataSource")
 	private ProductService productService;
+	
+	@Autowired
+	private CartService cartService;
+	
+	@Autowired
+	private PurchaseService pd;
 
 	@GetMapping("/")
 	public String home(HttpServletRequest request) {
@@ -114,6 +115,19 @@ public class MainController {
 		return "index";
 	}
 	
+	@GetMapping("/all-carts")
+	public String allCarts(HttpServletRequest request) {
+		request.setAttribute("carts", cartService.findAll());
+		request.setAttribute("mode", "MODE_CARTS");
+		return "index";
+	}
+///	
+	@GetMapping("/all-purchases")
+	public String allPurchaseDetail(@RequestParam int id, HttpServletRequest request) {
+		request.setAttribute("purchases", pd.findByCartId(id));
+		request.setAttribute("mode", "MODE_PURCHASE");
+		return "index";
+	}
 	
-	
+///////	
 }

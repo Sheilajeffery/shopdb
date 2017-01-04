@@ -24,7 +24,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import bootsample.model.shop.Cart;
+import bootsample.model.shop.Cart_detail;
 import bootsample.model.shop.Product;
+import bootsample.model.shop.Review;
 
 @Configuration
 @EnableTransactionManagement
@@ -48,7 +51,7 @@ public class ShopConfiguration {
 		return builder
 					.dataSource(secondDataSource())
 					.properties(hibernateProperties())
-					.packages(Product.class)
+					.packages(Product.class,Cart.class,Cart_detail.class,Review.class)
 					.persistenceUnit("mysqlPU")
 					.build();
 	}

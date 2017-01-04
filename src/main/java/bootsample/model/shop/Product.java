@@ -1,21 +1,14 @@
 package bootsample.model.shop;
 
 import java.io.Serializable;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.springframework.beans.factory.annotation.Qualifier;
 
 @Entity(name = "product")
 public class Product implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="productID")
@@ -25,6 +18,7 @@ public class Product implements Serializable {
 	private float price;
 	private int stock;
 	
+
 	public Product(){}
 	
 	public Product(String name, String description, float price, int stock) {

@@ -16,11 +16,7 @@ public class Cart implements Serializable {
 	
 	@Id
 	@Column(name="cartID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cart_detail")
 	private int id;
-	
-	//@OneToOne(fetch = FetchType.EAGER, mappedBy = "customer")
 	private int customerId;
 	
 	public Cart(){}

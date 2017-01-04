@@ -29,6 +29,7 @@
 					<li><a href="new-customer">New Customer</a></li>
 					<li><a href="all-products">All Products</a></li>
 					<li><a href="new-product">New Product</a></li>
+					<li><a href="all-carts">All Carts</a></li>
 				</ul>
 			</div>
 		</div>
@@ -43,6 +44,74 @@
 			</div>
 			<div class="container text-center " id="tasksDiv">
 				<!--  <hr> -->
+			</div>
+		</c:when>
+		
+		
+		
+		<c:when test="${mode== 'MODE_PURCHASE'}">
+			<div class="container text-center " id="tasksDiv">
+												<input type="hidden" name="id" value="${cart.id}" />
+				<h3>PURCHASES</h3>
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered text-left">
+						<thead>
+							<tr>
+								<th>cartId</th>
+								<th>Product</th>
+								<th>No. products</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="purchase" items="${purchases}">
+								<tr>
+									<td>${purchase.cartid}</td>
+									<td>${purchase.product}</td>
+									<td>${purchase.nr_of}</td>
+									<td>${purchase.price}</td>
+								</tr>
+								<tr></tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
+		
+		
+		
+		
+		
+		<c:when test="${mode== 'MODE_CARTS'}">
+			<div class="container text-center " id="tasksDiv">
+				<h3>Carts</h3>
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered text-left">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>CustomerId</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="cart" items="${carts}">
+								<tr>
+									<td>${cart.id}</td>
+									<td>${cart.customerId}</td>
+									<td><a href="all-purchases?id=${cart.id}"><span>Details </span></a></td>
+									<td><a href="delete-cart?id=${cart.id}"><span
+											class="glyphicon glyphicon-trash"></span></a></td>
+								</tr>
+								<tr></tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</c:when>
 
