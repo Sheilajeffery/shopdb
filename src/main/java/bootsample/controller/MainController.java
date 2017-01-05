@@ -27,7 +27,7 @@ public class MainController {
 	private CartService cartService;
 	
 	@Autowired
-	private PurchaseService pd;
+	private PurchaseService purchaseService;
 
 	@GetMapping("/")
 	public String home(HttpServletRequest request) {
@@ -115,7 +115,7 @@ public class MainController {
 		return "index";
 	}
 	
-	@GetMapping("/all-carts")
+	@GetMapping("/all-cart")
 	public String allCarts(HttpServletRequest request) {
 		request.setAttribute("carts", cartService.findAll());
 		request.setAttribute("mode", "MODE_CARTS");
@@ -124,10 +124,19 @@ public class MainController {
 ///	
 	@GetMapping("/all-purchases")
 	public String allPurchaseDetail(@RequestParam int id, HttpServletRequest request) {
-		request.setAttribute("purchases", pd.findByCartId(id));
+		request.setAttribute("purchases", purchaseService.findByCartId(id));
 		request.setAttribute("mode", "MODE_PURCHASE");
 		return "index";
 	}
 	
 ///////	
+	@GetMapping("/all-carts")
+	public String allPurchases(HttpServletRequest request) {
+		request.setAttribute("carts", purchaseService.findAllPurchases());
+		request.setAttribute("mode", "MODE_CART");
+		return "index";
+	}
+	
+	
+	
 }

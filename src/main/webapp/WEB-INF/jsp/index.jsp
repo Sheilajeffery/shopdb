@@ -39,7 +39,7 @@
 		<c:when test="${mode== 'MODE_HOME'}">
 			<div class="container " id="homeDiv">
 				<div class="jumbotron text-center">
-					<h1>Welcome to Customers Manager</h1>
+					<h1>Welcome to Shop Manager</h1>
 				</div>
 			</div>
 			<div class="container text-center " id="tasksDiv">
@@ -52,7 +52,7 @@
 		<c:when test="${mode== 'MODE_PURCHASE'}">
 			<div class="container text-center " id="tasksDiv">
 												<input type="hidden" name="id" value="${cart.id}" />
-				<h3>PURCHASES</h3>
+				<h3>Cart Details</h3>
 				<hr>
 				<div class="table-responsive">
 					<table class="table table-striped table-bordered text-left">
@@ -80,6 +80,35 @@
 			</div>
 		</c:when>
 		
+		<c:when test="${mode== 'MODE_CART'}">
+			<div class="container text-center " id="tasksDiv">
+				<h3>Carts</h3>
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered text-left">
+						<thead>
+							<tr>
+								<th>CartId</th>
+								<th>Customer username</th>
+								<th>Total price</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="cart" items="${carts}">
+								<tr>
+									<td>${cart.cartId}</td>
+									<td>${cart.customerUsername}</td>
+									<td>${cart.price}</td>
+									<td><a href="all-purchases?id=${cart.cartId}"><span>Details </span></a></td>
+								</tr>
+								<tr></tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
 		
 		
 		

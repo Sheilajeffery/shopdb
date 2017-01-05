@@ -74,12 +74,52 @@ public class PurchaseService {
 	return purchase_detail;
 
 	}
+	public float totalPrice(int id) {
 
-	public String getUsernameById(int id) {
+		List<Cart_detail> cart_details = new ArrayList<>();
+		List<PurchaseDetail> purchase_detail = new ArrayList<>();
+		int cartId;
+		String product;
+		int nr_of;
+		float price, totalprice = 0;
+		PurchaseDetail pd;
 
-		Customer c = customerRepository.findOne(id);
+		for (Cart_detail cart_detail : cart_detailRepository.findAll())
+			if (cart_detail.getCartId() == id)
+				cart_details.add(cart_detail);
 
-		return c.getUsername();
+		for (Cart_detail cd : cart_details) {
+			cartId = cd.getCartId();
+			product = productRepository.findOne(cd.getProductId()).getName();
+			nr_of = cd.getNumber_of_products();
+			price = nr_of * productRepository.findOne(cd.getProductId()).getPrice();
+
+			pd = new PurchaseDetail(cartId, product, nr_of, price);
+			purchase_detail.add(pd);
+			totalprice += pd.getPrice();
+		}
+
+		return totalprice;
+
 	}
+
+	public List<Purchase> findAllPurchases() {
+		//List<Cart> carts = new ArrayList<>();
+		List<Purchase> purchases = new ArrayList<>();
+		Purchase purchase;
+		int cartid;
+		float totprice;
+		String username;
+		for (Cart cart : cartRepository.findAll()) {
+			cartid = cart.getId();
+			username = customerRepository.findOne(cart.getCustomerId()).getUsername();
+			totprice = totalPrice(cartid);
+			
+			purchase = new Purchase(cartid,username,totprice);
+			purchases.add(purchase);
+		}
+		return purchases;
+	}
+	
 
 }

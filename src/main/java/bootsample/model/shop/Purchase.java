@@ -3,13 +3,13 @@ package bootsample.model.shop;
 public class Purchase {
 
 	private int cartId;
-	private String customerUsernanme;
+	private String customerUsername;
 	private float price;
 
-	public Purchase(int cartId, String customerUsernanme, float price) {
+	public Purchase(int cartId, String customerUsername, float price) {
 		super();
 		this.cartId = cartId;
-		this.customerUsernanme = customerUsernanme;
+		this.customerUsername = customerUsername;
 		this.price = price;
 	}
 
@@ -21,12 +21,12 @@ public class Purchase {
 		this.cartId = cartId;
 	}
 
-	public String getCustomerUsernanme() {
-		return customerUsernanme;
+	public String getCustomerUsername() {
+		return customerUsername;
 	}
 
-	public void setCustomerUsernanme(String customerUsernanme) {
-		this.customerUsernanme = customerUsernanme;
+	public void setCustomerUsername(String customerUsername) {
+		this.customerUsername = customerUsername;
 	}
 
 	public float getPrice() {
