@@ -30,6 +30,7 @@
 					<li><a href="all-products">All Products</a></li>
 					<li><a href="new-product">New Product</a></li>
 					<li><a href="all-carts">All Carts</a></li>
+					<li><a href="new-cart">New Cart</a></li>
 				</ul>
 			</div>
 		</div>
@@ -109,6 +110,28 @@
 				</div>
 			</div>
 		</c:when>
+		
+
+		<c:when
+			test="${mode == 'MODE_NEW_CART' || mode == 'MODE_UPDATE_CART'}">
+			<div class="container text-center">
+				<h3>Manage Carts</h3>
+				<hr>
+				<form class="form-horizontal" method="POST" action="save-cart">
+					<div class="form-group">
+						<label class="control-label col-md-3">CustomerId</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="customerId"
+								value="${cart.customerId}" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" value="Save" />
+					</div>
+			</form>
+			</div>		
+		</c:when>
+		
 		
 		
 		

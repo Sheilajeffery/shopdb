@@ -138,5 +138,18 @@ public class MainController {
 	}
 	
 	
+	@GetMapping("/new-cart")
+	public String newCart(HttpServletRequest request) {
+		request.setAttribute("mode", "MODE_NEW_CART");
+		return "index";
+	}
+	
+	@PostMapping("/save-cart")
+	public String saveCart(@ModelAttribute Cart cart, BindingResult bindingResult, HttpServletRequest request) {
+		cartService.save(cart);
+		request.setAttribute("carts",purchaseService.findAllPurchases());
+		request.setAttribute("mode", "MODE_CART");
+		return "index";
+	}
 	
 }

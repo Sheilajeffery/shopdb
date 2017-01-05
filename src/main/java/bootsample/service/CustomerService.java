@@ -49,4 +49,14 @@ public class CustomerService {
 		
 	}
 
+	public Customer findByUsername(String username){
+		
+		for (Customer customer : customerRepository.findAll()) {
+			if (customer.getUsername().equals(username))
+			return customer;
+		}
+		return null;
+		
+	}
+	
 }

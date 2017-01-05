@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 @Entity(name="cart")
 public class Cart implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Column(name="cartID")
 	private int id;
