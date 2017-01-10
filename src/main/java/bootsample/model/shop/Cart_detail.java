@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 @Entity(name="cart_detail")
 public class Cart_detail implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Column(name="cart_detailID")
 	private int id;

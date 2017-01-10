@@ -28,6 +28,9 @@ public class MainController {
 	
 	@Autowired
 	private PurchaseService purchaseService;
+	
+	@Autowired
+	private Cart_detailService cart_detailService;
 
 	@GetMapping("/")
 	public String home(HttpServletRequest request) {
@@ -121,15 +124,14 @@ public class MainController {
 		request.setAttribute("mode", "MODE_CARTS");
 		return "index";
 	}
-///	
+// cart_detail view	
 	@GetMapping("/all-purchases")
 	public String allPurchaseDetail(@RequestParam int id, HttpServletRequest request) {
 		request.setAttribute("purchases", purchaseService.findByCartId(id));
 		request.setAttribute("mode", "MODE_PURCHASE");
 		return "index";
 	}
-	
-///////	
+//cart view	
 	@GetMapping("/all-carts")
 	public String allPurchases(HttpServletRequest request) {
 		request.setAttribute("carts", purchaseService.findAllPurchases());
@@ -151,5 +153,25 @@ public class MainController {
 		request.setAttribute("mode", "MODE_CART");
 		return "index";
 	}
+///aici	
+	
+	@GetMapping("/new-detail")
+	public String newDetail(@RequestParam int id, HttpServletRequest request) {
+		request.setAttribute("cartId", id);
+		request.setAttribute("mode", "MODE_NEW_DETAIL");
+		return "index";
+	}
+	
+	
+//si aici	
+	@PostMapping("/save-detail")
+	public String saveDetail(@ModelAttribute Cart_detail cart_detail, BindingResult bindingResult, HttpServletRequest request) {
+		cart_detailService.save(cart_detail);
+		request.setAttribute("purchases", purchaseService.findByCartId(cart_detail.getCartId()));
+		request.setAttribute("mode", "MODE_PURCHASE");
+		return "index";
+	}
+	
+	
 	
 }

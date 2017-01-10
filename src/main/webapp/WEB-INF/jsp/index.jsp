@@ -48,11 +48,47 @@
 			</div>
 		</c:when>
 		
+	<c:when test="${mode== 'MODE_NEW_DETAIL'}">
+			<div class="container text-center " id="tasksDiv">
+				<form class="form-horizontal" method="POST" action="save-detail">
+				
+				<div class="form-group">
+						<label class="control-label col-md-3">CartId</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="cartId"
+								value="${cart_detail.productId}" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<label class="control-label col-md-3">ProductId</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="productId"
+								value="${cart_detail.productId}" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<label class="control-label col-md-3">No. products</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="number_of_products"
+								value="${cart_detail.number_of_products}" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" value="Save" />
+						
+					</div>
+			</form>
+				
+				
+				
+			</div>
+		</c:when>
+	
 		
 		
 		<c:when test="${mode== 'MODE_PURCHASE'}">
 			<div class="container text-center " id="tasksDiv">
-												<input type="hidden" name="id" value="${cart.id}" />
+			<input type="hidden" name="id" value="${cart.id}" />
 				<h3>Cart Details</h3>
 				<hr>
 				<div class="table-responsive">
@@ -78,7 +114,7 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
+				</div>
 		</c:when>
 		
 		<c:when test="${mode== 'MODE_CART'}">
@@ -92,7 +128,8 @@
 								<th>CartId</th>
 								<th>Customer username</th>
 								<th>Total price</th>
-								<th></th>
+								<th>See details</th>
+								<th>Add details</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -102,6 +139,7 @@
 									<td>${cart.customerUsername}</td>
 									<td>${cart.price}</td>
 									<td><a href="all-purchases?id=${cart.cartId}"><span>Details </span></a></td>
+									<td><a href="new-detail?id=${cart.cartId}"><span>Add Details </span></a></td>
 								</tr>
 								<tr></tr>
 							</c:forEach>
@@ -127,14 +165,11 @@
 					</div>	
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary" value="Save" />
+						
 					</div>
 			</form>
 			</div>		
 		</c:when>
-		
-		
-		
-		
 		
 		<c:when test="${mode== 'MODE_CARTS'}">
 			<div class="container text-center " id="tasksDiv">
